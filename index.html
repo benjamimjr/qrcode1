@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="viewport" content="width=device-width">
+    <title>QR CODE</title>
+</head>
+<body id="base">
+    <section id="content">
+        
+    </section>
+	<input type="button" id="qr" name="qr" value="Put your finger on me" />
+<script type="text/javascript" src="includes/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="includes/js/barcodescanner.js"></script>
+<script type="text/javascript">
+
+	function qrcodeConfig(){
+	
+	$("#qr").click(function(){
+		window.plugins.barcodeScanner.scan( function(result) {
+				
+					$("#content").html("We got a barcode<br />" +
+							  "Result: <a id='link' href='"+ result.text +"' target='_blank'>" + result.text + "</a><br />" +
+							  "Format: " + result.format + "<br />" +
+							  "Cancelled: " + result.cancelled);
+						  
+					//navigator.app.loadUrl(result.text, { openExternal:true } ); 
+				}, function(error) {
+					alert("Scanning failed: " + error);
+				}
+			);
+			
+	});
+	}
+	
+	
+	document.addEventListener("deviceready", qrcodeConfig, false);   
+
+</script>
+</body>
+</html>
