@@ -12,7 +12,7 @@
     <section id="content">
         
     </section>
-	<input type="button" id="qr" name="qr" value="Put your finger on me" />
+	<input type="button" id="qr" name="qr" value="Ligar scanner" />
 <script type="text/javascript" src="includes/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
@@ -24,7 +24,7 @@
 	$("#qr").click(function(){
 		window.plugins.barcodeScanner.scan( function(result) {
 				
-					$("#content").html("We got a barcode<br />" +
+					$("#content").html("Este é o conteúdo :<br />" +
 							  "Result: <a id='link' href='"+ result.text +"' target='_blank'>" + result.text + "</a><br />" +
 							  "Format: " + result.format + "<br />" +
 							  "Cancelled: " + result.cancelled);
