@@ -22,18 +22,17 @@
 	function qrcodeConfig(){
 	
 	$("#qr").click(function(){
-		window.plugins.barcodeScanner.scan( function(result) {
-				
-					$("#content").html("Este é o conteúdo :<br />" +
-							  "Result: <a id='link' href='"+ result.text +"' target='_blank'>" + result.text + "</a><br />" +
-							  "Format: " + result.format + "<br />" +
-							  "Cancelled: " + result.cancelled);
-						  
-					//navigator.app.loadUrl(result.text, { openExternal:true } ); 
-				}, function(error) {
-					alert("Scanning failed: " + error);
-				}
-			);
+		cordova.plugins.barcodeScanner.scan(
+			  function (result) {
+				  alert("We got a barcode\n" +
+						"Result: " + result.text + "\n" +
+						"Format: " + result.format + "\n" +
+						"Cancelled: " + result.cancelled);
+			  }, 
+			  function (error) {
+				  alert("Scanning failed: " + error);
+			  }
+		   );
 			
 	});
 	}
